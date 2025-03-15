@@ -1,3 +1,7 @@
-import RootLayout from "../_layout";
+import { Slot } from "expo-router";
 
-export default RootLayout
+export default function RootLayout() {
+  return (
+    <Slot/>
+  );
+}

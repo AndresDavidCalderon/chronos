@@ -1,8 +1,9 @@
 import { View } from "react-native"
 import TitleBar from "@/components/TitleBar"
+import {styles} from '@/components/commonStyles'
 
 const CalendarIndex = () => {
-    return <View>
+    return <View style={styles.background}>
         <TitleBar>Calendar</TitleBar>
     </View>
 }
