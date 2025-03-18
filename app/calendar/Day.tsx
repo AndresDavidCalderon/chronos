@@ -44,7 +44,9 @@ const dayStyles = StyleSheet.create({
         borderStyle:'solid',
         borderWidth:0.5,
         flex:1,
-        margin:0.5
+        margin:0.5,
+		flexDirection:'column',
+		alignItems:'center'
     },
     dayNotMain:{
         borderColor:'#2d2d2e',
@@ -54,9 +56,9 @@ const dayStyles = StyleSheet.create({
         margin:0.5
     },
     event:{
-        width:'100%',
-        height:'10%',
-		color:'white'
+        width:'80%',
+		color:'white',
+		backgroundColor:'blue',
     },
     dayTextAny:{
         textAlign:'center',
