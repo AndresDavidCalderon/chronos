@@ -5,16 +5,24 @@ export default function Day(date:Date,isMainMonth:boolean, renderDayOfWeek:boole
 	const [events,setEvents] = useState([])
 	useEffect(()=>{
 		const fetchData = async () => {
+			let response=null
 			try{
-				const response = await fetch('http://localhost:8000/calendar/events?date='+date.toDateString())
+				response = await fetch('http://localhost:8000/calendar/events?date='+date.toDateString())
+			}catch(e){
+				try {
+					console.log(date.getDate())
+					response = await fetch('http://192.168.137.1:8000/calendar/events?date='+date.toDateString())
+				} catch(e){
+					console.error("Error fetching Events on localhost: "+e)
+				}
+			}
+			if (response!=null){
 				const result = await response.json()
 				setEvents(result)
-			}catch(e){
-				console.error("Error fetching Events: "+e)
 			}
 		}
 		fetchData()
-	})
+	},[])
 
 	const eventElements=[]
 	for (let event in events){

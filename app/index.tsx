@@ -1,10 +1,9 @@
 import { Text, View, StyleSheet, Pressable, Image } from "react-native";
 import { useFonts } from "expo-font";
 import StyledText from "@/components/StyledText";
-import { Link } from "expo-router";
+import { Link,router } from "expo-router";
 import TitleBar from '@/components/TitleBar'
 import {styles} from '../components/commonStyles'
-
 
 
 export default function Index() {
@@ -14,8 +13,8 @@ export default function Index() {
       <TitleBar>Welcome</TitleBar>
       <View>
         <Link href='./calendar'>
-          <Pressable style = {styles.tile}>
-            <Image width={100} source={require('@/assets/images/icons/calendar-month.svg')}></Image>
+          <Pressable style = {styles.tile} onPressOut={()=>{router.navigate('./calendar')}}>
+            <Image style={homeStyles.tileImage} width={100} source={require('@/assets/images/icons/calendar-month.svg')}></Image>
             <StyledText size = {20}>Calendar</StyledText>
           </Pressable>
         </Link>
@@ -23,4 +22,9 @@ export default function Index() {
     </View>
   );
 }
+
+const homeStyles = StyleSheet.create({
+  tileImage:{
+  }
+});
 

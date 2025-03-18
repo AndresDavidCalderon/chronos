@@ -1,5 +1,4 @@
 import { View,Text,StyleSheet } from "react-native"
-import { useEffect, useState } from "react"
 import TitleBar from "@/components/TitleBar"
 import {styles} from '@/components/commonStyles'
 import Day from "./Day"
@@ -35,7 +34,9 @@ const renderWeek = (starting:Date,mainMonth:number,renderDayOfWeek:boolean) => {
     let currentDate=new Date(starting.getTime())
     let week = []
     for(let i=0;i<7;i++){
-        week.push(Day(currentDate,currentDate.getMonth() == mainMonth,renderDayOfWeek))
+        const dayDate=new Date()
+        dayDate.setDate(currentDate.getDate())
+        week.push(Day(dayDate,currentDate.getMonth() == mainMonth,renderDayOfWeek))
         currentDate.setDate(currentDate.getDate()+1)
     }
     return <View style={calendarStyles.week} key={starting.toDateString()} >{week}</View>
