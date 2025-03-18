@@ -2,12 +2,15 @@ import { View,Text,StyleSheet } from "react-native"
 import TitleBar from "@/components/TitleBar"
 import {styles} from '@/components/commonStyles'
 import Day from "./Day"
+import { StrictMode } from "react"
 
 const CalendarIndex = () => {
-    return <View style={styles.background}>
-        <TitleBar>Calendar</TitleBar>
-        {renderMonth(new Date())}
-    </View>
+    return <StrictMode>
+        <View style={styles.background}>
+            <TitleBar>Calendar</TitleBar>
+            {renderMonth(new Date())}
+        </View>
+    </StrictMode>
 }
 
 const renderMonth = (ofDate:Date) => {

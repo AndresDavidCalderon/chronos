@@ -2,7 +2,7 @@ import {useState,useEffect} from 'react'
 import {View,Text, StyleSheet} from 'react-native'
 
 export default function Day(date:Date,isMainMonth:boolean, renderDayOfWeek:boolean){
-	const [events,setEvents] = useState([])
+	const [events,setEvents] = useState([]) as [Array<Event>,Function]
 	useEffect(()=>{
 		const fetchData = async () => {
 			let response=null
@@ -24,14 +24,16 @@ export default function Day(date:Date,isMainMonth:boolean, renderDayOfWeek:boole
 		fetchData()
 	},[])
 
-	const eventElements=[]
-	for (let event in events){
-		eventElements.push(<View style={dayStyles.event}><Text>{event}</Text></View>)
-	}
+	const eventElements:Array<React.JSX.Element>=[]
+	events.forEach((event:Event)=>{
+		console.log(event)
+		eventElements.push(<View key={1} style={dayStyles.event}><Text style={dayStyles.eventText}>{event.title}</Text></View>)
+	})
 
 	return <View key={date.toDateString()} style={[isMainMonth ? dayStyles.day:dayStyles.dayNotMain]} >
 		{renderDayOfWeek ?<Text style={[dayStyles.dayText,dayStyles.dayTextAny]}>{date.toDateString().substring(0,3)}</Text>:null}
 		<Text style={[isMainMonth ? dayStyles.dayText:dayStyles.dayTextNotMain,dayStyles.dayTextAny]}>{date.getDate()}</Text>
+		{eventElements}
 	</View>
 }
 
@@ -54,6 +56,7 @@ const dayStyles = StyleSheet.create({
     event:{
         width:'100%',
         height:'10%',
+		color:'white'
     },
     dayTextAny:{
         textAlign:'center',
@@ -65,4 +68,12 @@ const dayStyles = StyleSheet.create({
         color:'gray',
         fontSize:10
     },
+	eventText:{
+		color:'white'
+	}
 })
+
+type Event={
+	title:String,
+	date:String
+}
