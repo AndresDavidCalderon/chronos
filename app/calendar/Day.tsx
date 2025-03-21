@@ -17,8 +17,14 @@ export default function Day(date:Date,isMainMonth:boolean, renderDayOfWeek:boole
 				}
 			}
 			if (response!=null){
-				const result = await response.json()
-				setEvents(result)
+				const result = await response.json();
+				const newEvents:Array<Event> = [];
+				result.forEach((event:any)=>{
+					const eventDate=new Date(event.date);
+					eventDate.setTime(Date.parse(event.date));
+					newEvents.push({title:event.title,date:eventDate});
+				})
+				setEvents(result);
 			}
 		}
 		fetchData()
@@ -77,5 +83,5 @@ const dayStyles = StyleSheet.create({
 
 type Event={
 	title:String,
-	date:String
+	date:Date
 }
