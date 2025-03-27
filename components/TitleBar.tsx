@@ -9,7 +9,7 @@ interface titleBarProps {
 const TitleBar = ({children}:titleBarProps) => {
     return <View style={styles.title_bar}>
             <View style={styles.title_container}>
-                <StyledText size={60} fontWeight={900}>{children}</StyledText>
+                <StyledText style={{fontSize:40}}> {children} </StyledText>
             </View>
         </View>
 }

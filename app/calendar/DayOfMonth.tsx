@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react'
 import {View,Text, StyleSheet} from 'react-native'
 
-export default function Day(date:Date,isMainMonth:boolean, renderDayOfWeek:boolean){
+export default function DayOfMonth(date:Date,isMainMonth:boolean, renderDayOfWeek:boolean){
 	const [events,setEvents] = useState([]) as [Array<Event>,Function]
 	useEffect(()=>{
 		const fetchData = async () => {

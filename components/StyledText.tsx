@@ -1,15 +1,13 @@
 import { Text } from "react-native"
 import { useFonts } from "expo-font"
+import { ReactNode } from "react"
 
-interface styledTextProps {
-    children? : any,
-    size?: number,
-    fontWeight?: any
+interface StyledTextProps{
+    children:ReactNode,
+    style?:object
 }
 
-const StyledText = ({children,  size = 30, fontWeight = '100'}:styledTextProps) => {
+export default function StyledText({children=[],style={}}:StyledTextProps){
     const [loaded, error] = useFonts({'open':require('../assets/fonts/open/opensans.ttf')})
-    return <Text style={{'fontFamily':'open', 'fontSize': size, color : 'white', 'fontWeight' : fontWeight}}>{children}</Text>
+    return <Text style={[{color : 'white', fontWeight:'700',fontFamily:'open'},style]}>{children}</Text>
 }
-
-export default StyledText

@@ -15,7 +15,7 @@ export default function Index() {
         <Link href='./calendar'>
           <Pressable style = {styles.tile} onPressOut={()=>{router.navigate('./calendar')}}>
             <Image style={homeStyles.tileImage} width={100} source={require('@/assets/images/icons/calendar-month.svg')}></Image>
-            <StyledText size = {20}>Calendar</StyledText>
+            <StyledText>Calendar</StyledText>
           </Pressable>
         </Link>
       </View>
