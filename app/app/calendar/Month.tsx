@@ -6,14 +6,18 @@ const renderWeek = (starting:Date,mainMonth:number,renderDayOfWeek:boolean) => {
     let week = []
     for(let i=0;i<7;i++){
         const dayDate=new Date()
-        dayDate.setDate(currentDate.getDate())
-        week.push(DayOfMonth(dayDate,currentDate.getMonth() == mainMonth,renderDayOfWeek))
+        dayDate.setTime(currentDate.getTime())
+        week.push(<DayOfMonth key={dayDate.toDateString()} date={dayDate} isMainMonth={currentDate.getMonth() == mainMonth} renderDayOfWeek={renderDayOfWeek}></DayOfMonth>)
         currentDate.setDate(currentDate.getDate()+1)
     }
     return <View style={calendarStyles.week} key={starting.toDateString()} >{week}</View>
 };
 
-export default function Month(ofDate:Date){
+interface monthProps{
+    ofDate:Date
+}
+
+export default function Month({ofDate}:monthProps){
     let starting = new Date(ofDate.getTime())
     let month:number = ofDate.getMonth()
     starting.setDate(1)

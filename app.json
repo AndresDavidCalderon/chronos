@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "dev.andresdavidcalderon.chronos",
+      "package": "dev.andresdavidcalderon.chronos"
     },
     "web": {
       "bundler": "metro",
@@ -35,6 +35,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "7ae7609f-8ad4-4008-b307-f815038c67fa"
+      }
     }
   }
 }

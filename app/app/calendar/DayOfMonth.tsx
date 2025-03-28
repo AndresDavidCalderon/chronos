@@ -1,7 +1,13 @@
 import {useState,useEffect} from 'react'
 import {View,Text, StyleSheet} from 'react-native'
 
-export default function DayOfMonth(date:Date,isMainMonth:boolean, renderDayOfWeek:boolean){
+interface DayOfMonthProps {
+	date: Date;
+	isMainMonth: boolean;
+	renderDayOfWeek: boolean;
+}
+
+export default function DayOfMonth({date,isMainMonth, renderDayOfWeek}:DayOfMonthProps) {
 	const [events,setEvents] = useState([]) as [Array<Event>,Function]
 	useEffect(()=>{
 		const fetchData = async () => {
@@ -10,7 +16,6 @@ export default function DayOfMonth(date:Date,isMainMonth:boolean, renderDayOfWee
 				response = await fetch('http://localhost:8000/calendar/events?date='+date.toDateString())
 			}catch(e){
 				try {
-					console.log(date.getDate())
 					response = await fetch('http://192.168.137.1:8000/calendar/events?date='+date.toDateString())
 				} catch(e){
 					console.error("Error fetching Events on localhost: "+e)
