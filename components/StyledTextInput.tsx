@@ -3,10 +3,12 @@ import { TextInput, StyleSheet } from 'react-native';
 
 interface StyledTextInputProps {
 	style?: object;
+	autoCorrect?: boolean;
+	props?: any;
 }
 
-export default function StyledTextInput({style}:StyledTextInputProps) {
-	return <TextInput style={[styles.defaultStyle, style]} />;
+export default function StyledTextInput({style, autoCorrect=true ,props}:StyledTextInputProps) {
+	return <TextInput style={[styles.defaultStyle, style]} autoCorrect={autoCorrect} {...props} />;
 }
 
 const styles = StyleSheet.create({

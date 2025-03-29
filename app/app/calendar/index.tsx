@@ -1,6 +1,6 @@
 import { View,Dimensions } from "react-native"
 import TitleBar from "@/components/TitleBar"
-import {styles} from '@/components/commonStyles'
+import styles from '@/components/commonStyles'
 import { useState } from "react"
 import { StrictMode } from "react"
 import Month from "./Month"

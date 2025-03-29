@@ -3,7 +3,7 @@ import { useFonts } from "expo-font";
 import StyledText from "@/components/StyledText";
 import { Link,router } from "expo-router";
 import TitleBar from '@/components/TitleBar'
-import {styles} from '@/components/commonStyles'
+import styles from '@/components/commonStyles'
 
 
 export default function Index() {
@@ -12,8 +12,8 @@ export default function Index() {
     <View style={styles.background}>
       <TitleBar>Welcome</TitleBar>
       <View>
-        <Link href='./calendar'>
-          <Pressable style = {styles.tile} onPressOut={()=>{router.navigate('./calendar')}}>
+        <Link href='./app/calendar'>
+          <Pressable style = {styles.tile} onPressOut={()=>{router.navigate('./app/calendar')}}>
             <Image style={homeStyles.tileImage} width={100} source={require('@/assets/images/icons/calendar-month.svg')}></Image>
             <StyledText>Calendar</StyledText>
           </Pressable>

@@ -14,9 +14,10 @@ const styles = StyleSheet.create({
 interface StyledButtonProps {
 	style?: object;
 	children: React.ReactNode;
+	onPress?: () => void;
 }
 
 
-export default function StyledButton({style, children,}:StyledButtonProps) {
-	return <TouchableOpacity style={[styles.defaultStyle, style]}>{children}</TouchableOpacity>;
+export default function StyledButton({style, children,onPress}:StyledButtonProps) {
+	return <TouchableOpacity onPress={onPress} style={[styles.defaultStyle, style]}>{children}</TouchableOpacity>;
 }
