@@ -5,8 +5,8 @@ import { useState } from "react";
 export default function RootLayout() {
   const [sessionKey,setSessionKey] = useState("LOGGED_OUT");
   return (
-    <SessionKeyContext value={sessionKey}>
+    <SessionKeyContext.Provider value={sessionKey}>
       <Slot screenOptions={{headerShown:false}}/>
-    </SessionKeyContext>
+    </SessionKeyContext.Provider>
   );
 }
